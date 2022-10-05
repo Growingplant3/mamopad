@@ -8,6 +8,15 @@ export default createStore({
   },
   // storeからデータを取得
   getters: {
+    getCount: (state) => {
+      return state.memos.length
+    },
+    getAll: (state) => {
+      return state.memos
+    },
+    getMemoById: (state) => (id) => {
+      return state.memos.find(memo => memo.id === id)
+    }
   },
   // storeの変化変異を起こす
   mutations: {
