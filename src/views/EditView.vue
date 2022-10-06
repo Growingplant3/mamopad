@@ -1,10 +1,14 @@
 <template>
-{{ memo.title }}
+  <MemoForm :memo="memo"/>
 </template>
 
 <script>
+import MemoForm from '@/components/MemoForm.vue'
 export default {
   name: 'EditView',
+  components: {
+    MemoForm
+  },
   computed: {
     memo() {
       const id = parseInt(this.$route.params.id)

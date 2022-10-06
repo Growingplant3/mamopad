@@ -1,5 +1,4 @@
 <template>
-  <h2>New</h2>
   <div>
     <input type="text" v-model="title">
   </div>
@@ -14,10 +13,13 @@
 <script>
   export default {
     name: 'MemoForm',
+    props: [
+      'memo'
+    ],
     data() {
       return {
-        title: 'アイウエオ',
-        content: 'こんにちは'
+        title: '',
+        content: '',
       }
     },
     methods: {
@@ -25,7 +27,11 @@
         // 一旦固定の内容で保存する
         let memo = {
           title: this.title,
-          content: this.content
+          content: this.content,
+        }
+
+        if (this.memo && this.memo.id) {
+          memo.id = this.memo.id
         }
 
         this.$store.commit('save', memo)
